@@ -1,78 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Urus</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  />
+  <meta charset="UTF-8">
+  <title>Glowing Urus Logo</title>
   <style>
     html, body {
       margin: 0;
-      padding: 0;
       height: 100%;
-      overflow: hidden;
-      background: none; /* remove black background */
-    }
-
-    body {
       background: url('bg.png') no-repeat center center fixed;
       background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: white;
-      font-family: sans-serif;
-      z-index: 1;
+    .glow-logo {
+      width: 300px;
+      filter: drop-shadow(0 0 10px red);
+      animation: rainbowGlow 5s infinite;
     }
 
-    .content img {
-      width: 180px;
-      filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 16px #ffffff);
-    }
-
-    .icons a {
-      color: white;
-      margin: 0 12px;
-      font-size: 1.7em;
-      transition: 0.3s;
-    }
-
-    .icons a:hover {
-      color: #fff;
-      text-shadow: 0 0 5px #fff;
-    }
-
-    audio {
-      display: none;
+    @keyframes rainbowGlow {
+      0%   { filter: drop-shadow(0 0 10px red); }
+      16%  { filter: drop-shadow(0 0 10px orange); }
+      33%  { filter: drop-shadow(0 0 10px yellow); }
+      50%  { filter: drop-shadow(0 0 10px green); }
+      66%  { filter: drop-shadow(0 0 10px blue); }
+      83%  { filter: drop-shadow(0 0 10px indigo); }
+      100% { filter: drop-shadow(0 0 10px violet); }
     }
   </style>
 </head>
 <body>
-
-  <!-- Custom Sound -->
-  <audio autoplay loop>
-    <source src="sound.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- Centered Content -->
-  <div class="content">
-    <img src="https://cdn.worldvectorlogo.com/logos/urus-1.svg" alt="Urus Logo" />
-    <!-- Optional icons below if needed:
-    <div class="icons">
-      <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord"></i></a>
-      <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
-    </div>
-    -->
-  </div>
-
+  <img src="https://cdn.worldvectorlogo.com/logos/urus-1.svg" alt="Urus Logo" class="glow-logo">
 </body>
 </html>
