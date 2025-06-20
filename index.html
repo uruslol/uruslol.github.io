@@ -1,284 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Staged was here!</title>
-
-  <!-- Custom Fonts -->
+  <meta charset="UTF-8">
+  <title>Urus LED Glow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'MostWanted';
-      src: url('mostwanted(1).ttf') format('truetype');
-    }
-
-    @font-face {
-      font-family: 'CodeFont';
-      src: url('Code.ttf') format('truetype');
-    }
-
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background: transparent;
-      overflow: hidden;
-      font-family: 'CodeFont', monospace;
+      width: 100%;
+      background: url('bg.png') no-repeat center center;
+      background-size: cover;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
+      background-color: black;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      overflow: hidden;
       cursor: url('data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAC/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8AAAAfsAAAH7gAAB+8AAAf/AAAH+AAAB/8AAAf/gAAH/4AAB/+AAAf/gAAH/wAAAAAAAA////////////////////////////////////////////////////////////////////////////////////////////////w////4E///8AH///AA///wAH//8AB///AA///wAH//8AA///AAP//wAD//8AA///AAf//wAP//8='), auto;
     }
 
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    #snow-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .glass-box {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
-      border-radius: 30px;
-      padding: 30px 40px;
-      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-      color: white;
-      text-align: center;
-      z-index: 2;
-      transition: transform 1.2s ease;
-      width: 380px;
-    }
-
-    .glitch-text {
-      position: relative;
-      font-size: 3.5em;
-      font-weight: bold;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      font-family: 'MostWanted', sans-serif;
-    }
-
-    .glitch-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-
-    .glitch-r { color: red; filter: drop-shadow(2px 0 red); }
-    .glitch-g { color: lime; filter: drop-shadow(-2px 0 lime); }
-    .glitch-b { color: blue; filter: drop-shadow(0 2px blue); }
-
-    .glitch-image {
-      position: relative;
-      display: inline-block;
+    .glow-logo {
+      width: 300px;
+      animation: rainbowGlow 3s infinite;
+      filter: drop-shadow(0 0 25px red);
       margin-bottom: 20px;
     }
 
-    .social-icons-inside {
-      margin-top: 25px;
+    @keyframes rainbowGlow {
+      0%   { filter: drop-shadow(0 0 25px red); }
+      20%  { filter: drop-shadow(0 0 25px orange); }
+      40%  { filter: drop-shadow(0 0 25px yellow); }
+      60%  { filter: drop-shadow(0 0 25px green); }
+      80%  { filter: drop-shadow(0 0 25px blue); }
+      100% { filter: drop-shadow(0 0 25px violet); }
+    }
+
+    .socials {
       display: flex;
+      gap: 40px;
       justify-content: center;
-      gap: 25px;
+      margin-bottom: 30px;
     }
 
-    .social-icons-inside a img {
-      width: 45px;
-      height: 45px;
-      border-radius: 14px;
+    .social-icon {
+      width: 50px;
+      height: 50px;
+      animation: rainbowGlow 3s infinite;
+      filter: drop-shadow(0 0 10px red);
+      transition: transform 0.3s;
     }
 
-    .glitch-image img {
-      width: 100%;
-      display: block;
+    .social-icon:hover {
+      transform: scale(1.1);
     }
 
-    .fade-in {
-      transform: scaleY(0);
-      transform-origin: top;
-      animation: unfold 1.4s ease forwards;
+    .credit {
+      font-size: 16px;
+      text-align: center;
+      margin-top: 10px;
     }
 
-    @keyframes unfold {
-      to {
-        transform: scaleY(1);
-      }
+    .credit a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .credit a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <!-- Background video -->
-  <video id="bg-video" autoplay muted loop playsinline>
-    <source src="https://r2.guns.lol/f3c69b42-b442-42c2-abab-3ba82161eb27.mp4" type="video/mp4">
-  </video>
 
-  <!-- Snow canvas -->
-  <canvas id="snow-canvas"></canvas>
+  <!-- URUS Logo with Rainbow Glow -->
+  <img src="https://cdn.worldvectorlogo.com/logos/urus-1.svg" alt="Urus Logo" class="glow-logo">
 
-  <!-- Main content box -->
-  <div class="glass-box fade-in">
-    <!-- Glitched URUS Logo -->
-    <div class="glitch-image">
-      <img src="urus.svg" class="glitch-layer glitch-r">
-      <img src="urus.svg" class="glitch-layer glitch-g">
-      <img src="urus.svg" class="glitch-layer glitch-b">
-      <img src="urus.svg" alt="URUS Logo">
-    </div>
-
-    <!-- Glitched Text -->
-    <div class="glitch-text" id="glitch">
-      <span class="glitch-layer glitch-r">Staged</span>
-      <span class="glitch-layer glitch-g">Staged</span>
-      <span class="glitch-layer glitch-b">Staged</span>
-      <span>Staged</span>
-    </div>
-
-    <!-- Typewriter Message -->
-    <div id="typewriter"></div>
-
-    <!-- Glitched Social Icons -->
-    <div class="social-icons-inside">
-      <div class="glitch-image">
-        <img src="tiktok.webp" class="glitch-layer glitch-r">
-        <img src="tiktok.webp" class="glitch-layer glitch-g">
-        <img src="tiktok.webp" class="glitch-layer glitch-b">
-        <a href="https://tiktok.com" target="_blank"><img src="tiktok.webp" alt="TikTok" /></a>
-      </div>
-      <div class="glitch-image">
-        <img src="insta.webp" class="glitch-layer glitch-r">
-        <img src="insta.webp" class="glitch-layer glitch-g">
-        <img src="insta.webp" class="glitch-layer glitch-b">
-        <a href="https://instagram.com" target="_blank"><img src="insta.webp" alt="Instagram" /></a>
-      </div>
-    </div>
+  <!-- Social Icons -->
+  <div class="socials">
+    <a href="https://your-instagram-link" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="social-icon">
+    </a>
+    <a href="https://your-tiktok-link" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" class="social-icon">
+    </a>
   </div>
 
-  <!-- Background Music -->
-  <audio id="bg-music" autoplay loop>
-    <source src="nights.mp3" type="audio/mpeg">
-  </audio>
+  <!-- Clickable Footer Credit -->
+  <div class="credit">
+    <a href="https://staged.lol" target="_blank">made by staged</a>
+  </div>
 
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const audio = document.getElementById("bg-music");
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          document.body.addEventListener('click', () => {
-            audio.play();
-          }, { once: true });
-        });
-      }
-    });
-
-    const canvas = document.getElementById("snow-canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const mouse = { x: null, y: null };
-    window.addEventListener("mousemove", e => {
-      mouse.x = e.x; mouse.y = e.y;
-    });
-
-    class Particle {
-      constructor() {
-        this.reset();
-        this.baseX = this.x;
-        this.baseY = this.y;
-        this.density = Math.random() * 30 + 1;
-      }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-      }
-      draw() {
-        ctx.fillStyle = "white";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      update() {
-        let dx = mouse.x - this.x, dy = mouse.y - this.y;
-        let dist = Math.sqrt(dx * dx + dy * dy);
-        let force = (120 - dist) / 120;
-        let dirX = dx / dist, dirY = dy / dist;
-        if (dist < 120) {
-          this.x -= dirX * force * this.density;
-          this.y -= dirY * force * this.density;
-        } else {
-          if (this.x !== this.baseX) this.x -= (this.x - this.baseX) / 10;
-          if (this.y !== this.baseY) this.y -= (this.y - this.baseY) / 10;
-        }
-        this.draw();
-      }
-    }
-
-    const particlesArray = [];
-    for (let i = 0; i < 200; i++) particlesArray.push(new Particle());
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particlesArray.forEach(p => p.update());
-      requestAnimationFrame(animate);
-    }
-    animate();
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
-    const messages = ["Fuck you S0cial!", "QUÉBECOIS CERTIFIED!!", "all my links bellow"];
-    let i = 0, j = 0, isDeleting = false, waitTime = 0;
-    const target = document.getElementById("typewriter");
-
-    function type() {
-      const txt = messages[i].substring(0, j);
-      target.textContent = txt;
-
-      if (!isDeleting && j < messages[i].length) {
-        j++;
-      } else if (isDeleting && j > 0) {
-        j--;
-      } else {
-        if (!isDeleting) {
-          waitTime = 5;
-        }
-        isDeleting = !isDeleting;
-        if (!isDeleting) i = (i + 1) % messages.length;
-      }
-
-      const speed = isDeleting ? 100 : 80;
-      setTimeout(type, waitTime-- > 0 ? 1000 : speed);
-    }
-    type();
-
-    const glitchR = document.querySelector(".glitch-r");
-    const glitchG = document.querySelector(".glitch-g");
-    const glitchB = document.querySelector(".glitch-b");
-    document.addEventListener("mousemove", (e) => {
-      const centerX = window.innerWidth / 2, centerY = window.innerHeight / 2;
-      const offsetX = (e.clientX - centerX) / 90;
-      const offsetY = (e.clientY - centerY) / 90;
-      glitchR.style.transform = `translate(${-offsetX}px, ${-offsetY}px)`;
-      glitchG.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-      glitchB.style.transform = `translate(${offsetY}px, ${-offsetX}px)`;
-    });
-  </script>
 </body>
 </html>
