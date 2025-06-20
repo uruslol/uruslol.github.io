@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Urus</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
   <style>
-    html, body {
+    html,
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
       background: black;
     }
-    video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
+
+    body {
+      background: url('bg.png') no-repeat center center fixed;
+      background-size: cover;
     }
 
     .content {
@@ -56,30 +56,28 @@
   </style>
 </head>
 <body>
-
-  <!-- Video Background -->
-  <video autoplay muted loop playsinline>
-    <source src="https://r2.guns.lol/7f3fd66c-a403-4d06-a78e-ac936d169c6e.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
   <!-- Custom Sound -->
   <audio autoplay loop>
-    <source src="sound.mp3" type="audio/mpeg">
+    <source src="sound.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
 
   <!-- Centered Content -->
   <div class="content">
-    <img src="https://cdn.worldvectorlogo.com/logos/urus-1.svg" alt="Urus Logo">
+    <img src="https://cdn.worldvectorlogo.com/logos/urus-1.svg" alt="Urus Logo" />
     <!-- Optional icons below if needed:
     <div class="icons">
-      <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord"></i></a>
-      <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://discord.gg/" target="_blank"
+        ><i class="fab fa-discord"></i
+      ></a>
+      <a href="https://instagram.com/" target="_blank"
+        ><i class="fab fa-instagram"></i
+      ></a>
+      <a href="https://tiktok.com/" target="_blank"
+        ><i class="fab fa-tiktok"></i
+      ></a>
     </div>
     -->
   </div>
-
 </body>
 </html>
