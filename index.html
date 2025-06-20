@@ -19,36 +19,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: -2;
-      filter: contrast(1.2) brightness(1.05);
-      animation: flicker 0.15s infinite;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.12),
-        rgba(0, 0, 0, 0.12) 2px,
-        transparent 2px,
-        transparent 4px
-      );
       z-index: -1;
-      mix-blend-mode: multiply;
-    }
-
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        opacity: 1;
-      }
-      20%, 24%, 55% {
-        opacity: 0.97;
-      }
     }
 
     .content {
@@ -64,7 +35,7 @@
 
     .content img {
       width: 180px;
-      filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px #0ff);
+      filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 16px #ffffff);
     }
 
     .icons a {
@@ -75,8 +46,8 @@
     }
 
     .icons a:hover {
-      color: #0ff;
-      text-shadow: 0 0 5px #0ff;
+      color: #fff;
+      text-shadow: 0 0 5px #fff;
     }
 
     audio {
@@ -92,9 +63,6 @@
     Your browser does not support the video tag.
   </video>
 
-  <!-- TV Scanline Overlay -->
-  <div class="overlay"></div>
-
   <!-- Custom Sound -->
   <audio autoplay loop>
     <source src="sound.mp3" type="audio/mpeg">
@@ -104,7 +72,7 @@
   <!-- Centered Content -->
   <div class="content">
     <img src="https://cdn.worldvectorlogo.com/logos/urus-1.svg" alt="Urus Logo">
-    <!-- If you want icons below the logo, just uncomment this:
+    <!-- Optional icons below if needed:
     <div class="icons">
       <a href="https://discord.gg/" target="_blank"><i class="fab fa-discord"></i></a>
       <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
