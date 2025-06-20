@@ -2,42 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Video Background with Custom Sound</title>
+  <title>Centered Video Background with Custom Sound</title>
   <style>
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
+      background: black;
     }
-    video {
+    .video-container {
       position: fixed;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      min-height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-    .content {
-      position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      width: 70vw; /* 70% of viewport width */
+      max-width: 1000px;
+    }
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    .content {
+      position: absolute;
+      top: 90%;
+      left: 50%;
+      transform: translateX(-50%);
       color: white;
       font-family: sans-serif;
       text-align: center;
-      font-size: 2em;
+      font-size: 1.5em;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background video -->
-  <video autoplay muted loop playsinline>
-    <source src="https://r2.guns.lol/1c7c003e-3926-4d1a-a5d3-167807467a53.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <!-- Video container -->
+  <div class="video-container">
+    <video autoplay muted loop playsinline>
+      <source src="https://r2.guns.lol/1c7c003e-3926-4d1a-a5d3-167807467a53.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
   <!-- Custom sound -->
   <audio autoplay loop>
