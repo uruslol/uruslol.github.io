@@ -1,21 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Cool Page</title>
+  <meta charset="UTF-8">
+  <title>Video Background with Custom Sound</title>
   <style>
-    body {
+    body, html {
       margin: 0;
       padding: 0;
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      height: 100%;
+      overflow: hidden;
     }
-    h1 {
-      font-size: 3rem;
-      text-shadow: 0 0 10px #0f0;
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background video -->
+  <video autoplay muted loop playsinline>
+    <source src="https://r2.guns.lol/1c7c003e-3926-4d1a-a5d3-167807467a53.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Custom sound -->
+  <audio autoplay loop>
+    <source src="sound.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Content overlay -->
+  <div class="content">
+    Welcome to the site
+  </div>
+
+</body>
+</html>
