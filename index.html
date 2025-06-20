@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Urus LED Glow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
+      padding: 0;
       height: 100%;
       width: 100%;
       background: url('bg.png') no-repeat center center;
@@ -14,22 +16,34 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      position: relative;
       background-color: black;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
       overflow: hidden;
+      cursor: url('data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAC/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8AAAAfsAAAH7gAAB+8AAAf/AAAH+AAAB/8AAAf/gAAH/4AAB/+AAAf/gAAH/wAAAAAAAA////////////////////////////////////////////////////////////////////////////////////////////////w////4E///8AH///AA///wAH//8AB///AA///wAH//8AA///AAP//wAD//8AA///AAf//wAP//8='), auto;
     }
 
     .glow-logo {
       width: 300px;
       animation: rainbowGlow 3s infinite;
       filter: drop-shadow(0 0 25px red);
+      margin-bottom: 20px;
+    }
+
+    @keyframes rainbowGlow {
+      0%   { filter: drop-shadow(0 0 25px red); }
+      20%  { filter: drop-shadow(0 0 25px orange); }
+      40%  { filter: drop-shadow(0 0 25px yellow); }
+      60%  { filter: drop-shadow(0 0 25px green); }
+      80%  { filter: drop-shadow(0 0 25px blue); }
+      100% { filter: drop-shadow(0 0 25px violet); }
     }
 
     .socials {
-      position: absolute;
-      bottom: 30px;
       display: flex;
       gap: 40px;
+      justify-content: center;
+      margin-bottom: 30px;
     }
 
     .social-icon {
@@ -44,22 +58,29 @@
       transform: scale(1.1);
     }
 
-    @keyframes rainbowGlow {
-      0%   { filter: drop-shadow(0 0 10px red); }
-      20%  { filter: drop-shadow(0 0 10px orange); }
-      40%  { filter: drop-shadow(0 0 10px yellow); }
-      60%  { filter: drop-shadow(0 0 10px green); }
-      80%  { filter: drop-shadow(0 0 10px blue); }
-      100% { filter: drop-shadow(0 0 10px violet); }
+    .credit {
+      font-size: 16px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .credit a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .credit a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <!-- Glowing URUS Logo -->
+  <!-- URUS Logo with Rainbow Glow -->
   <img src="https://cdn.worldvectorlogo.com/logos/urus-1.svg" alt="Urus Logo" class="glow-logo">
 
-  <!-- Social Icons with rainbow glow -->
+  <!-- Social Icons -->
   <div class="socials">
     <a href="https://your-instagram-link" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="social-icon">
@@ -67,6 +88,11 @@
     <a href="https://your-tiktok-link" target="_blank">
       <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" class="social-icon">
     </a>
+  </div>
+
+  <!-- Clickable Footer Credit -->
+  <div class="credit">
+    <a href="https://staged.lol" target="_blank">made by staged</a>
   </div>
 
 </body>
