@@ -16,22 +16,20 @@
       width: 100%;
       overflow: hidden;
       font-family: 'Zen Kurenaido', sans-serif;
-      background: black;
+      background: url('https://images.unsplash.com/photo-1727950183920-654c2feee258?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
       position: relative;
+      background-color: black;
     }
 
-    /* Full-screen GIF background */
-    body::before {
-      content: "";
+    /* Dark overlay without blur */
+    .overlay {
       position: fixed;
       top: 0;
       left: 0;
       height: 100%;
       width: 100%;
-      /* Replace the URL below with your custom background GIF or image */
-      background: url(maksim-samuilionak-_BR3-t7VRrw-unsplash.jpg) no-repeat center center/cover;
-      z-index: -1;
-      filter: brightness(0.6) blur(1px);
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
     }
 
     .tv-text {
@@ -50,8 +48,8 @@
       border-right: 2px solid rgba(255,255,255,0.7);
       opacity: 1;
       animation: blink 0.7s step-end infinite;
-      /* Glow effect */
       text-shadow: 0 0 8px white, 0 0 20px white;
+      z-index: 1;
     }
 
     /* Cursor blink */
@@ -68,6 +66,7 @@
       font-size: 0.9rem;
       color: rgba(255,255,255,0.5);
       text-shadow: 0 0 5px rgba(255,255,255,0.3);
+      z-index: 1;
     }
 
     .made-by a {
@@ -82,11 +81,16 @@
 </head>
 <body>
 
+  <!-- Background overlay -->
+  <div class="overlay"></div>
+
   <!-- Music -->
   <audio id="backgroundMusic" src="mmusic.mp3" autoplay loop></audio>
 
+  <!-- Typing text -->
   <div class="tv-text" id="tvText"></div>
 
+  <!-- Footer -->
   <div class="made-by">
     <a href="https://staged.lol" target="_blank">made by staged</a>
   </div>
