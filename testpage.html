@@ -2,95 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Welcome to the test page!</title>
+  <title>Login Page</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      height: 100%;
-      width: 100%;
-      font-family: sans-serif;
+    body {
       background: #000;
       color: #fff;
-    }
-    .container {
+      font-family: sans-serif;
       display: flex;
-      height: 100%;
-      width: 100%;
-    }
-    .left, .right {
-      flex: 1;
-      display: flex;
+      height: 100vh;
+      justify-content: center;
       align-items: center;
-      justify-content: center;
+      margin: 0;
     }
-    .left {
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
+    .login-container {
+      background: #222;
+      padding: 30px;
+      border-radius: 8px;
+      width: 300px;
+      box-shadow: 0 0 10px #0f0;
     }
-    .wic-letter {
-      font-size: 12vw;
-      font-weight: 900;
-      transform: rotate(-90deg) scaleX(2.0);
-      margin: 3px 0;
-      letter-spacing: 0;
-    }
-    .wic-c {
-      transform: rotate(-90deg) scaleX(2.5);
-    }
-    .divider {
-      width: 1px;
-      height: 200px;
-      background: rgba(255,255,255,0.2);
-      align-self: center;
-    }
-    .right {
-      flex-direction: column;
-      justify-content: center;
-      gap: 20px;
-    }
-    .social-link {
-      display: block;
-      width: 80px;
-      height: 80px;
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
-    .social-link img {
+    input[type=text], input[type=password] {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      padding: 10px;
+      margin: 10px 0 20px 0;
+      border: none;
+      border-radius: 4px;
     }
-    .social-link:hover {
-      transform: scale(1.1);
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #0f0;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .error {
+      color: #f00;
+      margin-bottom: 10px;
+      display: none;
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="left">
-    <div class="wic-letter wic-c">C</div>
-    <div class="wic-letter">I</div>
-    <div class="wic-letter">W</div>
-  </div>
-  <div class="divider"></div>
-  <div class="right">
-    <a href="https://example.com" target="_blank" class="social-link">
-      <img src="link-image1.jpg" alt="Social One">
-    </a>
-    <a href="https://example.com" target="_blank" class="social-link">
-      <img src="link-image2.jpg" alt="Social Two">
-    </a>
-    <a href="https://example.com" target="_blank" class="social-link">
-      <img src="link-image3.jpg" alt="Social Three">
-    </a>
-  </div>
+<div class="login-container">
+  <h2>Login</h2>
+  <div id="error-msg" class="error">Invalid username or password</div>
+  <input type="text" id="username" placeholder="Username" autocomplete="off" />
+  <input type="password" id="password" placeholder="Password" autocomplete="off" />
+  <button onclick="login()">Login</button>
 </div>
+
+<script>
+  function login() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    // Demo fixed login
+    if(username === 'user' && password === 'pass123') {
+      alert('Login successful!');
+      // Redirect to "protected" page
+      window.location.href = 'protected.html';
+    } else {
+      const errorMsg = document.getElementById('error-msg');
+      errorMsg.style.display = 'block';
+    }
+  }
+</script>
 
 </body>
 </html>
