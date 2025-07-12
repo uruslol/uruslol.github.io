@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WIC Vertical Landing</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: sans-serif;
+      background: #000;
+      color: #fff;
+    }
+    .container {
+      display: flex;
+      height: 100%;
+      width: 100%;
+    }
+    .left, .right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .left {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+    .wic-letter {
+      font-size: 12vw;
+      font-weight: 900;
+      transform: rotate(-90deg) scaleX(2.5);
+      margin: 3px 0;
+      letter-spacing: 0;
+    }
+    .wic-c {
+      transform: rotate(-90deg) scaleX(3.5);
+    }
+    .divider {
+      width: 1px;
+      height: 200px;
+      background: rgba(255,255,255,0.2);
+      align-self: center;
+    }
+    .right {
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    .social-link {
+      display: block;
+      width: 80px;
+      height: 80px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .social-link img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .social-link:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="left">
+    <div class="wic-letter wic-c">C</div>
+    <div class="wic-letter">I</div>
+    <div class="wic-letter">W</div>
+  </div>
+  <div class="divider"></div>
+  <div class="right">
+    <a href="https://example.com" target="_blank" class="social-link">
+      <img src="link-image1.jpg" alt="Social One">
+    </a>
+    <a href="https://example.com" target="_blank" class="social-link">
+      <img src="link-image2.jpg" alt="Social Two">
+    </a>
+    <a href="https://example.com" target="_blank" class="social-link">
+      <img src="link-image3.jpg" alt="Social Three">
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
