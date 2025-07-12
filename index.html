@@ -21,7 +21,7 @@
       background-color: black;
     }
 
-    /* Dark overlay without blur */
+    /* Dark overlay */
     .overlay {
       position: fixed;
       top: 0;
@@ -32,14 +32,30 @@
       z-index: 0;
     }
 
-    .tv-text {
-      color: #ffffff;
-      text-align: center;
-      padding: 20px;
+    .tv-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      z-index: 1;
+      padding: 20px;
+    }
+
+    .pfp {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+      border: 2px solid rgba(255,255,255,0.7);
+      box-shadow: 0 0 10px rgba(255,255,255,0.6);
+    }
+
+    .tv-text {
+      color: #ffffff;
       font-size: 2.4rem;
       text-shadow: 0 0 10px rgba(255,255,255,0.7);
       line-height: 1.5;
@@ -49,7 +65,6 @@
       opacity: 1;
       animation: blink 0.7s step-end infinite;
       text-shadow: 0 0 8px white, 0 0 20px white;
-      z-index: 1;
     }
 
     /* Cursor blink */
@@ -87,8 +102,11 @@
   <!-- Music -->
   <audio id="backgroundMusic" src="mmusic.mp3" autoplay loop></audio>
 
-  <!-- Typing text -->
-  <div class="tv-text" id="tvText"></div>
+  <!-- Typing text with PFP -->
+  <div class="tv-container">
+    <img class="pfp" src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/df78b186466fc7a64480998b7aa1019a~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=d21cabad&x-expires=1752494400&x-signature=4Bysw1n7PwOSjyruOR9AQbl6eJY%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=maliva" alt="PFP">
+    <div class="tv-text" id="tvText"></div>
+  </div>
 
   <!-- Footer -->
   <div class="made-by">
