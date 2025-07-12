@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Staged love urus</title>
+  <title>Sad Nostalgic Screen</title>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -21,7 +21,6 @@
       background-color: black;
     }
 
-    /* Dark overlay */
     .overlay {
       position: fixed;
       top: 0;
@@ -37,11 +36,13 @@
       align-items: center;
       justify-content: center;
       position: absolute;
-      top: 50%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 1;
       padding: 20px;
+      flex-wrap: wrap;
+      text-align: center;
     }
 
     .pfp {
@@ -67,10 +68,34 @@
       text-shadow: 0 0 8px white, 0 0 20px white;
     }
 
-    /* Cursor blink */
     @keyframes blink {
       0%, 100% { border-color: rgba(255,255,255,0.7); }
       50% { border-color: transparent; }
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      z-index: 1;
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .social-icons a img {
+      width: 40px;
+      height: 40px;
+      opacity: 0.5;
+      filter: grayscale(100%) brightness(80%);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .social-icons a img:hover {
+      opacity: 0.9;
+      transform: scale(1.1);
     }
 
     .made-by {
@@ -96,19 +121,30 @@
 </head>
 <body>
 
-  <!-- Background overlay -->
   <div class="overlay"></div>
 
-  <!-- Music -->
   <audio id="backgroundMusic" src="mmusic.mp3" autoplay loop></audio>
 
-  <!-- Typing text with PFP -->
   <div class="tv-container">
-    <img class="pfp" src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/df78b186466fc7a64480998b7aa1019a~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=d21cabad&x-expires=1752494400&x-signature=4Bysw1n7PwOSjyruOR9AQbl6eJY%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=maliva" alt="PFP">
+    <img class="pfp" src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/df78b186466fc7a64480998b7aa1019a~tplv-tiktokx-cropcenter:1080:1080.jpeg?..." alt="PFP">
     <div class="tv-text" id="tvText"></div>
   </div>
 
-  <!-- Footer -->
+  <div class="social-icons">
+    <a href="https://www.tiktok.com/@yourusername" target="_blank">
+      <img src="tiktok.png" alt="TikTok">
+    </a>
+    <a href="https://www.snapchat.com/add/yourusername" target="_blank">
+      <img src="snapchat.png" alt="Snapchat">
+    </a>
+    <a href="https://github.com/yourusername" target="_blank">
+      <img src="github.png" alt="GitHub">
+    </a>
+    <a href="https://www.instagram.com/yourusername" target="_blank">
+      <img src="instagram.png" alt="Instagram">
+    </a>
+  </div>
+
   <div class="made-by">
     <a href="https://staged.lol" target="_blank">made by staged</a>
   </div>
@@ -133,7 +169,6 @@
         charIndex++;
         setTimeout(typeText, 70);
       } else {
-        // Show full text for 4 seconds then fade out
         setTimeout(() => {
           tvText.style.transition = 'opacity 1s';
           tvText.style.opacity = '0';
@@ -151,7 +186,6 @@
 
     typeText();
 
-    // Handle autoplay restrictions on browsers (click to play music if paused)
     const music = document.getElementById("backgroundMusic");
     document.addEventListener("click", () => {
       if (music.paused) music.play();
