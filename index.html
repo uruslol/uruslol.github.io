@@ -46,6 +46,7 @@
       white-space: nowrap;
       overflow: hidden;
       border-right: 2px solid rgba(255,255,255,0.7);
+      opacity: 1;
     }
 
     /* Cursor blink */
@@ -80,10 +81,13 @@
 </head>
 <body>
 
+  <!-- Music -->
+  <audio id="backgroundMusic" src="music.mp3" autoplay loop></audio>
+
   <div class="tv-text" id="tvText"></div>
 
   <div class="made-by">
-    <a href="https://stage.lol" target="_blank">made by sttaged</a>
+    <a href="https://staged.lol" target="_blank">made by staged</a>
   </div>
 
   <script>
@@ -112,7 +116,23 @@
           setTimeout(() => {
             currentText = (currentText + 1) % texts.length;
             tvText.textContent = '';
+            tvText.style.transition = 'none';
             tvText.style.opacity = '1';
             charIndex = 0;
             typeText();
-          }
+          }, 1000);
+        }, 4000);
+      }
+    }
+
+    typeText();
+
+    // Handle autoplay restrictions on browsers (if needed)
+    const music = document.getElementById("backgroundMusic");
+    document.addEventListener("click", () => {
+      if (music.paused) music.play();
+    });
+  </script>
+
+</body>
+</html>
