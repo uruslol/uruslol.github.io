@@ -17,6 +17,7 @@
       overflow: hidden;
       font-family: 'Zen Kurenaido', sans-serif;
       background: black;
+      position: relative;
     }
 
     /* Full-screen GIF background */
@@ -27,7 +28,7 @@
       left: 0;
       height: 100%;
       width: 100%;
-      /* <-- Replace this URL with your custom background GIF or image */
+      /* Replace the URL below with your custom background GIF or image */
       background: url('your-custom-background.gif') no-repeat center center/cover;
       z-index: -1;
       filter: brightness(0.6) blur(1px);
@@ -48,16 +49,15 @@
       overflow: hidden;
       border-right: 2px solid rgba(255,255,255,0.7);
       opacity: 1;
+      animation: blink 0.7s step-end infinite;
+      /* Glow effect */
+      text-shadow: 0 0 8px white, 0 0 20px white;
     }
 
     /* Cursor blink */
     @keyframes blink {
       0%, 100% { border-color: rgba(255,255,255,0.7); }
       50% { border-color: transparent; }
-    }
-
-    .tv-text {
-      animation: blink 0.7s step-end infinite;
     }
 
     .made-by {
@@ -83,7 +83,7 @@
 <body>
 
   <!-- Music -->
-  <audio id="backgroundMusic" src="music.mp3" autoplay loop></audio>
+  <audio id="backgroundMusic" src="mmusic.mp3" autoplay loop></audio>
 
   <div class="tv-text" id="tvText"></div>
 
@@ -93,6 +93,7 @@
 
   <script>
     const texts = [
+      "Nowadays, our life is only made for big corporations...",
       "The nights feel heavier than the days...",
       "Some memories aren't meant to fade...",
       "I miss versions of me I barely remember...",
@@ -110,7 +111,7 @@
         charIndex++;
         setTimeout(typeText, 70);
       } else {
-        // Stay for 4 seconds, then fade out and move to next
+        // Show full text for 4 seconds then fade out
         setTimeout(() => {
           tvText.style.transition = 'opacity 1s';
           tvText.style.opacity = '0';
@@ -128,7 +129,7 @@
 
     typeText();
 
-    // Handle autoplay restrictions on browsers (if needed)
+    // Handle autoplay restrictions on browsers (click to play music if paused)
     const music = document.getElementById("backgroundMusic");
     document.addEventListener("click", () => {
       if (music.paused) music.play();
