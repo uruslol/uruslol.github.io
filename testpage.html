@@ -2,75 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Login Page</title>
+  <title>Access Restricted</title>
   <style>
     body {
       background: #000;
       color: #fff;
       font-family: sans-serif;
       display: flex;
-      height: 100vh;
       justify-content: center;
       align-items: center;
+      height: 100vh;
       margin: 0;
+      text-align: center;
+      padding: 20px;
     }
-    .login-container {
-      background: #222;
-      padding: 30px;
-      border-radius: 8px;
-      width: 300px;
-      box-shadow: 0 0 10px #0f0;
-    }
-    input[type=text], input[type=password] {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0 20px 0;
-      border: none;
-      border-radius: 4px;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #0f0;
-      border: none;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .error {
-      color: #f00;
+    h1 {
+      font-size: 3rem;
       margin-bottom: 10px;
-      display: none;
+    }
+    p {
+      font-size: 1.25rem;
+      color: #bbb;
     }
   </style>
 </head>
 <body>
-
-<div class="login-container">
-  <h2>Login</h2>
-  <div id="error-msg" class="error">Invalid username or password</div>
-  <input type="text" id="username" placeholder="Username" autocomplete="off" />
-  <input type="password" id="password" placeholder="Password" autocomplete="off" />
-  <button onclick="login()">Login</button>
-</div>
-
-<script>
-  function login() {
-    const username = document.getElementById('username').value.trim();
-    const password = document.getElementById('password').value.trim();
-
-    // Demo fixed login
-    if(username === 'user' && password === 'pass123') {
-      alert('Login successful!');
-      // Redirect to "protected" page
-      window.location.href = 'protected.html';
-    } else {
-      const errorMsg = document.getElementById('error-msg');
-      errorMsg.style.display = 'block';
-    }
-  }
-</script>
-
+  <div>
+    <h1>Access Restricted</h1>
+    <p>You do not have permission to view this page.</p>
+  </div>
 </body>
 </html>
