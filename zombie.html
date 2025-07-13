@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zombie Sound on Click</title>
+<title>Zombie Sound on Zombie Click</title>
 <style>
   body {
     margin: 0;
@@ -19,21 +19,23 @@
   .zombie-img {
     width: 200px;
     height: auto;
-    pointer-events: none;
+    cursor: pointer;
     user-select: none;
     opacity: 0.85;
   }
 </style>
 </head>
 <body>
-  <img src="Zombie_JE3_BE2-removebg-preview.png" alt="Zombie" class="zombie-img" />
+  <img src="Zombie_JE3_BE2-removebg-preview.png" alt="Zombie" class="zombie-img" id="zombie" />
 
   <audio id="zombie-sound" src="_2cd4bae6-2c0c-426f-ad25-2b55850742a2-1.mp3" preload="auto"></audio>
 
   <script>
-    document.body.addEventListener('click', () => {
-      const audio = document.getElementById('zombie-sound');
-      audio.currentTime = 0; // rewind to start
+    const zombieImg = document.getElementById('zombie');
+    const audio = document.getElementById('zombie-sound');
+
+    zombieImg.addEventListener('click', () => {
+      audio.currentTime = 0;
       audio.play();
     });
   </script>
