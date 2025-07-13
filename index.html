@@ -129,6 +129,66 @@
     .made-by a:hover {
       text-decoration: underline;
     }
+
+    /* Folder container fixed bottom center */
+    #folderContainer {
+      position: fixed;
+      bottom: 60px; /* above made-by */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      font-family: 'Zen Kurenaido', sans-serif;
+    }
+    /* Folder icon styling */
+    #folderIcon {
+      font-size: 2.5rem;
+      cursor: pointer;
+      user-select: none;
+      color: white;
+      filter: drop-shadow(0 0 2px black);
+      transition: color 0.3s ease;
+    }
+    #folderIcon:hover {
+      color: #8be0ff;
+    }
+    /* Popup container */
+    #folderPopup {
+      margin-top: 8px;
+      background: rgba(0,0,0,0.85);
+      border: 1px solid #444;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      width: 280px;
+      color: #8be0ff;
+      font-size: 1rem;
+      user-select: text;
+    }
+    /* Hidden by default */
+    .hidden {
+      display: none;
+    }
+    /* Folder title */
+    .folderTitle {
+      padding: 10px 15px;
+      font-weight: bold;
+      border-bottom: 1px solid #333;
+    }
+    /* List styles */
+    .folderList {
+      list-style: none;
+      margin: 0;
+      padding: 10px 15px;
+    }
+    .folderList li {
+      padding: 6px 0;
+    }
+    .folderList li a {
+      color: #8be0ff;
+      text-decoration: none;
+    }
+    .folderList li a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -159,6 +219,17 @@
 
   <div class="made-by">
     <a href="https://urus.lol/legal.html" target="_blank">made by Wic (WhatIsCrypto)</a>
+  </div>
+
+  <!-- Folder and popup container -->
+  <div id="folderContainer">
+    <div id="folderIcon" title="Open folder">📁</div>
+    <div id="folderPopup" class="hidden">
+      <div class="folderTitle">Funny things I made when I was bored</div>
+      <ul class="folderList">
+        <li><a href="https://urus.lol/zombie" target="_blank" rel="noopener noreferrer">Zombie</a></li>
+      </ul>
+    </div>
   </div>
 
   <script>
@@ -201,6 +272,27 @@
     const music = document.getElementById("backgroundMusic");
     document.addEventListener("click", () => {
       if (music.paused) music.play();
+    });
+
+    // Folder popup toggle
+    const folderIcon = document.getElementById('folderIcon');
+    const folderPopup = document.getElementById('folderPopup');
+    const folderContainer = document.getElementById('folderContainer');
+
+    folderIcon.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent document click closing immediately
+      if (folderPopup.classList.contains('hidden')) {
+        folderPopup.classList.remove('hidden');
+      } else {
+        folderPopup.classList.add('hidden');
+      }
+    });
+
+    // Close folder popup when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!folderContainer.contains(e.target) && !folderPopup.classList.contains('hidden')) {
+        folderPopup.classList.add('hidden');
+      }
     });
   </script>
 
