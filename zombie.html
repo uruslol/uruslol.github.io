@@ -3,59 +3,40 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zombie Background with Glitch Text</title>
+<title>Zombie Sound on Click</title>
 <style>
-  /* Replace the background image with your new webp */
   body {
     margin: 0;
     height: 100vh;
     background: url('jiwmv34pluj91.webp') no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
-    font-family: monospace;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     position: relative;
   }
 
-  /* Glitch text styles */
-  .glitch {
-    font-size: 5rem;
-    font-weight: 900;
-    position: relative;
-    color: white;
-    animation: glitch-anim 1.5s infinite;
-  }
-  @keyframes glitch-anim {
-    0% {
-      text-shadow: 2px 0 red, -2px 0 cyan;
-    }
-    50% {
-      text-shadow: -2px 0 red, 2px 0 cyan;
-    }
-    100% {
-      text-shadow: 2px 0 red, -2px 0 cyan;
-    }
-  }
-
-  /* Zombie image styling */
   .zombie-img {
     position: absolute;
     bottom: 20px;
     right: 20px;
     width: 200px;
     height: auto;
-    pointer-events: none; /* so it doesn't interfere with clicks */
+    pointer-events: none;
     user-select: none;
     opacity: 0.85;
   }
 </style>
 </head>
 <body>
-  <div class="glitch">ava</div>
   <img src="Zombie_JE3_BE2-removebg-preview.png" alt="Zombie" class="zombie-img" />
+
+  <audio id="zombie-sound" src="_2cd4bae6-2c0c-426f-ad25-2b55850742a2-1.mp3" preload="auto"></audio>
+
+  <script>
+    document.body.addEventListener('click', () => {
+      const audio = document.getElementById('zombie-sound');
+      audio.currentTime = 0; // rewind to start
+      audio.play();
+    });
+  </script>
 </body>
 </html>
