@@ -1,23 +1,49 @@
-<script>
-  const zombieImg = document.getElementById('zombie');
-  const audio = document.getElementById('zombie-sound');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Zombie Sound on Zombie Click</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: url('jiwmv34pluj91.webp') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 
-  // Make sure audio is loaded
-  audio.addEventListener('canplaythrough', () => {
-    console.log('Audio is loaded and ready to play');
-  });
+  .zombie-img {
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+  <img src="Zombie_JE3_BE2-removebg-preview.png" alt="Zombie" class="zombie-img" id="zombie" />
 
-  zombieImg.addEventListener('click', () => {
-    if (audio.readyState >= 3) {  // HAVE_FUTURE_DATA or higher
+  <audio id="zombie-sound" preload="auto">
+    <source src="_2cd4bae6-2c0c-426f-ad25-2b55850742a2-1.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const zombieImg = document.getElementById('zombie');
+    const audio = document.getElementById('zombie-sound');
+
+    zombieImg.addEventListener('click', () => {
+      // Try to play the audio and catch any errors
       audio.currentTime = 0;
-      audio.play().then(() => {
-        console.log('Playing zombie sound');
-      }).catch(err => {
-        console.error('Failed to play audio:', err);
+      audio.play().catch(error => {
+        console.error('Audio play error:', error);
       });
-    } else {
-      console.log('Audio not ready, loading now...');
-      audio.load();
-    }
-  });
-</script>
+    });
+  </script>
+</body>
+</html>
