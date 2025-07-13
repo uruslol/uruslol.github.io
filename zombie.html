@@ -1,48 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zombie Sound on Zombie Click</title>
-<style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: url('jiwmv34pluj91.webp') no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  .zombie-img {
-    width: 200px;
-    height: auto;
-    cursor: pointer;
-    user-select: none;
-    opacity: 0.85;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>Zombie Sound</title>
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100%; width: 100%;
+      display: flex; justify-content: center; align-items: center;
+      background: url('jiwmv34pluj91.webp') no-repeat center center fixed;
+      background-size: cover;
+    }
+    #zombieImage {
+      cursor: pointer;
+      max-width: 300px;
+      display: block;
+      margin: auto;
+    }
+  </style>
 </head>
 <body>
-  <img src="Zombie_JE3_BE2-removebg-preview.png" alt="Zombie" class="zombie-img" id="zombie" />
-
-  <audio id="zombie-sound" preload="auto">
-    <source src="_2cd4bae6-2c0c-426f-ad25-2b55850742a2-1.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
+  <img id="zombieImage" src="Zombie_JE3_BE2-removebg-preview.png" alt="Zombie" />
+  <audio id="zombieSound" src="zombiesound.mp3"></audio>
 
   <script>
-    const zombieImg = document.getElementById('zombie');
-    const audio = document.getElementById('zombie-sound');
+    const zombieImage = document.getElementById('zombieImage');
+    const zombieSound = document.getElementById('zombieSound');
 
-    zombieImg.addEventListener('click', () => {
-      // Try to play the audio and catch any errors
-      audio.currentTime = 0;
-      audio.play().catch(error => {
-        console.error('Audio play error:', error);
-      });
+    zombieImage.addEventListener('click', () => {
+      zombieSound.play();
     });
   </script>
 </body>
