@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Zombie Sound</title>
+  <title>Zombie Sound with Shake</title>
   <style>
     body, html {
       margin: 0; padding: 0; height: 100%; width: 100%;
@@ -12,9 +12,22 @@
     }
     #zombieImage {
       cursor: pointer;
-      max-width: 300px;
+      max-width: 200px;
       display: block;
       margin: auto;
+      transition: transform 0.1s ease-in-out;
+    }
+    /* Shake animation */
+    @keyframes shake {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      20% { transform: translate(-5px, 0) rotate(-10deg); }
+      40% { transform: translate(5px, 0) rotate(10deg); }
+      60% { transform: translate(-5px, 0) rotate(-10deg); }
+      80% { transform: translate(5px, 0) rotate(10deg); }
+      100% { transform: translate(0, 0) rotate(0deg); }
+    }
+    .shaking {
+      animation: shake 0.5s infinite;
     }
   </style>
 </head>
@@ -27,7 +40,17 @@
     const zombieSound = document.getElementById('zombieSound');
 
     zombieImage.addEventListener('click', () => {
+      // Add shaking class
+      zombieImage.classList.add('shaking');
+
+      // Play sound
+      zombieSound.currentTime = 0; // rewind to start
       zombieSound.play();
+
+      // Remove shaking class when sound ends
+      zombieSound.onended = () => {
+        zombieImage.classList.remove('shaking');
+      };
     });
   </script>
 </body>
