@@ -1,43 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Zombie Sound on Zombie Click</title>
-<style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: url('jiwmv34pluj91.webp') no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+<script>
+  const zombieImg = document.getElementById('zombie');
+  const audio = document.getElementById('zombie-sound');
 
-  .zombie-img {
-    width: 200px;
-    height: auto;
-    cursor: pointer;
-    user-select: none;
-    opacity: 0.85;
-  }
-</style>
-</head>
-<body>
-  <img src="Zombie_JE3_BE2-removebg-preview.png" alt="Zombie" class="zombie-img" id="zombie" />
+  // Make sure audio is loaded
+  audio.addEventListener('canplaythrough', () => {
+    console.log('Audio is loaded and ready to play');
+  });
 
-  <audio id="zombie-sound" src="_2cd4bae6-2c0c-426f-ad25-2b55850742a2-1.mp3" preload="auto"></audio>
-
-  <script>
-    const zombieImg = document.getElementById('zombie');
-    const audio = document.getElementById('zombie-sound');
-
-    zombieImg.addEventListener('click', () => {
+  zombieImg.addEventListener('click', () => {
+    if (audio.readyState >= 3) {  // HAVE_FUTURE_DATA or higher
       audio.currentTime = 0;
-      audio.play();
-    });
-  </script>
-</body>
-</html>
+      audio.play().then(() => {
+        console.log('Playing zombie sound');
+      }).catch(err => {
+        console.error('Failed to play audio:', err);
+      });
+    } else {
+      console.log('Audio not ready, loading now...');
+      audio.load();
+    }
+  });
+</script>
